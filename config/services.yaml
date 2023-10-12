@@ -1,20 +1,22 @@
 parameters:
 
 services:
-    _defaults:
-        autowire: true
-        autoconfigure: true
-    App\:
-        resource: '../src/'
-        exclude:
-            - '../src/Kernel.php'
+  _defaults:
+    autowire: true
+    autoconfigure: true
+  App\:
+    resource: '../src/'
+    exclude:
+      - '../src/Kernel.php'
 
-    App\Kernel\FileStorage\EngineInterface:
-        factory: ['@App\Kernel\FileStorage\EngineFactory', 'create']
-    App\Kernel\FileStorage\EngineFactory:
-        arguments:
-            $engine: '%env(FILE_STORAGE_ENGINE)%'
+  App\Kernel\FileStorage\EngineInterface:
+    factory: [ '@App\Kernel\FileStorage\EngineFactory', 'create' ]
+  App\Kernel\FileStorage\EngineFactory:
+    arguments:
+      $engine: '%env(FILE_STORAGE_ENGINE)%'
+      $googleAppKeyfile: '%env(GOOGLE_APPLICATION_CREDENTIALS)%'
+      $googleStorageBucket: '%env(GOOGLE_STORAGE_BUCKET)%'
 
-    App\Kernel\FoldersStructure:
-        arguments:
-            $projectDir: '%kernel.project_dir%'
+  App\Kernel\FoldersStructure:
+    arguments:
+      $projectDir: '%kernel.project_dir%'

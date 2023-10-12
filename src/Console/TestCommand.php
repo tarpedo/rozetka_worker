@@ -12,19 +12,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 #[AsCommand(name: 'app:test')]
 class TestCommand extends Command
 {
-    public function __construct(
-        private \App\Kernel\FileStorage\EngineInterface $fileStorage,
-    ) {
-        parent::__construct();
-    }
-
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $this->fileStorage->putFileData('test.txt', 'hello');
-
-        //$storage = new StorageClient(['keyFilePath' => '/path/to/my-project-key.json']);
-
-        $output->writeln('Whoa!');
+        $output->writeln('It\'s work!');
 
         return Command::SUCCESS;
     }

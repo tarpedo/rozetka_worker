@@ -8,7 +8,7 @@ interface EngineInterface
 {
     public function isFileExist(string $path): bool;
 
-    public function removeFile(string $path): bool;
+    public function removeFile(string $path): void;
 
     public function getFileData(string $path): ?string;
 

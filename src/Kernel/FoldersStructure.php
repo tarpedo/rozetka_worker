@@ -13,11 +13,11 @@ class FoldersStructure
 
     public function getRootDir(): string
     {
-        return rtrim($this->projectDir, '/') . '/';
+        return rtrim($this->projectDir, '/').'/';
     }
 
     public function getVarPath(): string
     {
-        return $this->getRootDir() . 'var/';
+        return $this->getRootDir().'var/';
     }
 }

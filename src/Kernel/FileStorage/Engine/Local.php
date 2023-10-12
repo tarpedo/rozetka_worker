@@ -15,13 +15,13 @@ class Local implements \App\Kernel\FileStorage\EngineInterface
         return is_file($this->getFullFilePath($path));
     }
 
-    public function removeFile(string $path): bool
+    public function removeFile(string $path): void
     {
         if (!$this->isFileExist($path)) {
-            return true;
+            return;
         }
 
-        return unlink($this->getFullFilePath($path));
+        unlink($this->getFullFilePath($path));
     }
 
     public function getFileData(string $path): ?string
