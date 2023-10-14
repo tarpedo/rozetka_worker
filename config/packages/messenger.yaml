@@ -1,0 +1,8 @@
+framework:
+    messenger:
+        buses:
+            event.bus:
+                default_middleware:
+                    enabled: true
+                    allow_no_handlers: false
+                    allow_no_senders: false
