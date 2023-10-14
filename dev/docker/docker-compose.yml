@@ -17,6 +17,17 @@ services:
     working_dir: /var/www
     volumes:
       - ../../:/var/www
+    tty: true
+    command: >
+      sh -c "
+      service apache2 start
+      && ./wait
+      && composer install --no-interaction
+      && php bin/console doctrine:migrations:migrate --no-interaction --allow-no-migration
+      && sleep infinity"
+    environment:
+      WAIT_HOSTS: db:3306
+      WAIT_HOSTS_TIMEOUT: 1000
     networks:
       - rozetka_gateway_net
   db:
