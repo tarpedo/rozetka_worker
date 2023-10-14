@@ -26,6 +26,9 @@ class Account
     #[ORM\Embedded(class: Account\SellerInfo::class, columnPrefix: false)]
     private Account\SellerInfo $sellerInfo;
 
+    #[ORM\Embedded(class: Account\MarketInfo::class, columnPrefix: false)]
+    private Account\MarketInfo $marketInfo;
+
     #[ORM\Column(name: 'update_date', type: Types::DATETIME_IMMUTABLE)]
     private \DateTimeImmutable $updateDate;
 
@@ -49,10 +52,12 @@ class Account
         string $username,
         string $password,
         Account\SellerInfo $sellerInfo,
+        Account\MarketInfo $marketInfo,
     ) {
         $this->username = $username;
         $this->password = $password;
         $this->sellerInfo = $sellerInfo;
+        $this->marketInfo = $marketInfo;
     }
 
     public function getId(): int
@@ -83,6 +88,18 @@ class Account
     public function setSellerInfo(Account\SellerInfo $sellerInfo): self
     {
         $this->sellerInfo = $sellerInfo;
+
+        return $this;
+    }
+
+    public function getMarketInfo(): Account\MarketInfo
+    {
+        return $this->marketInfo;
+    }
+
+    public function setMarketInfo(Account\MarketInfo $marketInfo): self
+    {
+        $this->marketInfo = $marketInfo;
 
         return $this;
     }

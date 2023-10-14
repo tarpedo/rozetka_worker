@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Rozetka\Account;
 
 use Doctrine\DBAL\Types\Types;
@@ -9,26 +11,26 @@ use Doctrine\ORM\Mapping as ORM;
 class SellerInfo
 {
     #[ORM\Column(name: 'seller_fio', type: Types::STRING, length: 250, nullable: false)]
-    private string $sellerFio;
+    private string $fio;
 
     #[ORM\Column(name: 'seller_email', type: Types::STRING, length: 250, nullable: false)]
-    private string $sellerEmail;
+    private string $email;
 
     public function __construct(
-        string $sellerFio,
-        string $sellerEmail,
+        string $fio,
+        string $email,
     ) {
-        $this->sellerFio = $sellerFio;
-        $this->sellerEmail = $sellerEmail;
+        $this->fio = $fio;
+        $this->email = $email;
     }
 
-    public function getSellerFio(): string
+    public function getFio(): string
     {
-        return $this->sellerFio;
+        return $this->fio;
     }
 
-    public function getSellerEmail(): string
+    public function getEmail(): string
     {
-        return $this->sellerEmail;
+        return $this->email;
     }
 }
