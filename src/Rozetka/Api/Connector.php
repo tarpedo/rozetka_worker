@@ -16,7 +16,7 @@ class Connector implements ConnectorInterface
     public function single(
         Account $account,
         CommandInterface $command,
-    ): array {
+    ): \App\Kernel\ArrayWrapper {
         $request = $command->getRequest();
         $request = $this->completeRequest($request, $account);
 
@@ -25,7 +25,7 @@ class Connector implements ConnectorInterface
         $response = $client->send($request);
         $responseBody = (array)json_decode((string)$response->getBody(), true);
 
-        return $responseBody;
+        return new \App\Kernel\ArrayWrapper($responseBody);
     }
 
     private function completeRequest(

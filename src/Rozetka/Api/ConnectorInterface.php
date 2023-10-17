@@ -6,5 +6,5 @@ namespace App\Rozetka\Api;
 
 interface ConnectorInterface
 {
-    public function single(Account $account, CommandInterface $command): array;
+    public function single(Account $account, CommandInterface $command): \App\Kernel\ArrayWrapper;
 }

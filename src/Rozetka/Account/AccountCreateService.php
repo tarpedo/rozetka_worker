@@ -18,23 +18,22 @@ class AccountCreateService
 
     public function process(
         string $username,
-        string $password,
+        string $encodedPassword,
     ): ?Account {
-        $encodedPassword = base64_encode($password);
         $accountInfo = $this->credentialsRetrieve->process($username, $encodedPassword);
 
-        if ($accountInfo['success'] === false) {
+        if ($accountInfo->get('success') === false) {
             return null;
         }
 
         $sellerInfo = new SellerInfo(
-            $accountInfo['content']['seller']['fio'],
-            $accountInfo['content']['seller']['email'],
+            $accountInfo->get('content/seller/fio'),
+            $accountInfo->get('content/seller/email'),
         );
 
         $marketInfo = new MarketInfo(
-            $accountInfo['content']['market']['id'],
-            $accountInfo['content']['market']['title'],
+            $accountInfo->get('content/market/id'),
+            $accountInfo->get('content/market/title'),
         );
 
         $account = $this->repository->findByUsername($username);

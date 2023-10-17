@@ -14,7 +14,7 @@ class Retrieve
     public function process(
         string $username,
         string $encodedPassword
-    ): array {
+    ): \App\Kernel\ArrayWrapper {
         $command = new \App\Rozetka\Api\Command\Account\Login(
             $username,
             $encodedPassword,
