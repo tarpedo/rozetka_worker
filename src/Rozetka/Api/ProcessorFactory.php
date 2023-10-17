@@ -8,6 +8,7 @@ class ProcessorFactory
 {
     public function __construct(
         private readonly ConnectorInterface $connector,
+        private readonly AccessTokenFactory $accessTokenFactory,
     ) {
     }
 
@@ -16,6 +17,7 @@ class ProcessorFactory
         return new Processor(
             $account,
             $this->connector,
+            $this->accessTokenFactory,
         );
     }
 }

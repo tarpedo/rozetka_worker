@@ -16,12 +16,13 @@ class Account
         return $this->accessToken === null;
     }
 
-    public function getAccessToken(): ?string
+    public function getAccessToken(): string
     {
         if ($this->isGrantless()) {
             throw new \App\Kernel\Exception\Logic('Account does not have access token');
         }
 
+        /** @var string */
         return $this->accessToken;
     }
 }

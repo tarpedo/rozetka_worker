@@ -12,14 +12,22 @@ class ClientFactory
     ) {
     }
 
-    public function create(): \GuzzleHttp\Client
-    {
+    public function create(
+        Account $account,
+    ): \GuzzleHttp\Client {
+        $headers = [
+            'Content-Type' => 'application/json',
+            'Content-Language' => 'uk',
+        ];
+
+        if (!$account->isGrantless()) {
+            $headers['Authorization'] = 'Bearer '.$account->getAccessToken();
+        }
+
         return new \GuzzleHttp\Client([
             \GuzzleHttp\RequestOptions::CONNECT_TIMEOUT => $this->connectionTimeout,
             \GuzzleHttp\RequestOptions::TIMEOUT => $this->timeout,
-            \GuzzleHttp\RequestOptions::HEADERS => [
-                'Content-Type' => 'application/json',
-            ],
+            \GuzzleHttp\RequestOptions::HEADERS => $headers,
         ]);
     }
 }

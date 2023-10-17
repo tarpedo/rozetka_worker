@@ -14,7 +14,7 @@ class AccessTokenFactory
     ) {
     }
 
-    public function create(\App\Rozetka\Account $account): string
+    public function create(\App\Rozetka\Account $account): ?string
     {
         return $this->cache->get(
             $this->prepareCacheKey($account->getId()),

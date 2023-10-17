@@ -20,7 +20,7 @@ class Connector implements ConnectorInterface
         $request = $command->getRequest();
         $request = $this->completeRequest($request, $account);
 
-        $client = $this->clientFactory->create();
+        $client = $this->clientFactory->create($account);
 
         $response = $client->send($request);
         $responseBody = (array)json_decode((string)$response->getBody(), true);
@@ -32,10 +32,6 @@ class Connector implements ConnectorInterface
         \GuzzleHttp\Psr7\Request $request,
         Account $account,
     ): \Psr\Http\Message\RequestInterface {
-        if (!$account->isGrantless()) {
-            $request->withHeader('Authorization', 'Bearer '.$account->getAccessToken());
-        }
-
         $uri = $request->getUri();
         if (empty($uri->getHost())) {
             $uri = $request->getUri()
