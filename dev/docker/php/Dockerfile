@@ -22,13 +22,8 @@ RUN docker-php-ext-configure pcntl --enable-pcntl \
   && docker-php-ext-install \
     pcntl
 
-RUN cd /tmp && git clone https://github.com/websupport-sk/pecl-memcache && \
-     cd pecl-memcache && \
-     phpize && \
-     ./configure && \
-     make && \
-     make install && \
-     docker-php-ext-enable memcache
+RUN curl -sSL https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions -o - | sh -s \
+      php-memcached-dev/php-memcached@v3.2.0RC2
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
