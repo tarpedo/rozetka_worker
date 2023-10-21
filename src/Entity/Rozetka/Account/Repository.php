@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace App\Repository\Rozetka;
+namespace App\Entity\Rozetka\Account;
 
-use App\Rozetka\Account\RepositoryInterface;
+use App\Repository\Rozetka\AccountInterface;
 
-class Account implements RepositoryInterface
+class Repository implements AccountInterface
 {
     private \Doctrine\ORM\EntityRepository $repository;
 
     public function __construct(
         private readonly \Doctrine\ORM\EntityManagerInterface $em,
     ) {
-        $this->repository = $this->em->getRepository(\App\Rozetka\Account::class);
+        $this->repository = $this->em->getRepository(\App\Entity\Rozetka\Account::class);
     }
 
-    public function create(\App\Rozetka\Account $account): void
+    public function create(\App\Entity\Rozetka\Account $account): void
     {
         $this->em->persist($account);
         $this->em->flush();
@@ -27,7 +27,7 @@ class Account implements RepositoryInterface
         $this->em->flush();
     }
 
-    public function findByUsername(string $username): ?\App\Rozetka\Account
+    public function findByUsername(string $username): ?\App\Entity\Rozetka\Account
     {
         return $this->repository->findOneBy([
             'username' => $username,

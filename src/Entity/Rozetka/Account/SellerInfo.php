@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Rozetka\Account;
+namespace App\Entity\Rozetka\Account;
 
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Embeddable()]
+#[ORM\Embeddable]
 class SellerInfo
 {
     #[ORM\Column(name: 'seller_fio', type: Types::STRING, length: 250, nullable: false)]

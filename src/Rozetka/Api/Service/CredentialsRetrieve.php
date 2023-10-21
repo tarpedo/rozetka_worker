@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Rozetka\Account\Credentials;
+namespace App\Rozetka\Api\Service;
 
-class Retrieve
+class CredentialsRetrieve
 {
     public function __construct(
         private readonly \App\Rozetka\Api\ConnectorInterface $connector,

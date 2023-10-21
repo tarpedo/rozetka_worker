@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace App\Rozetka\Account;
+namespace App\Entity\Rozetka\Good;
 
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Embeddable()]
-class MarketInfo
+#[ORM\Embeddable]
+class RzCategory
 {
-    #[ORM\Column(name: 'market_id', type: Types::INTEGER, length: 10, nullable: false)]
+    #[ORM\Column(name: 'rz_category_id', type: Types::INTEGER, length: 10, nullable: true)]
     private int $id;
 
-    #[ORM\Column(name: 'market_title', type: Types::STRING, length: 250, nullable: false)]
+    #[ORM\Column(name: 'rz_category_title', type: Types::STRING, length: 250, nullable: true)]
     private string $title;
 
     public function __construct(

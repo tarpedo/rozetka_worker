@@ -12,5 +12,5 @@ doctrine:
     mappings:
       Rozetka:
         type: attribute
-        dir: '%kernel.project_dir%/src/Rozetka'
-        prefix: App\Rozetka
+        dir: '%kernel.project_dir%/src/Entity/Rozetka'
+        prefix: App\Entity\Rozetka

@@ -2,16 +2,18 @@
 
 declare(strict_types=1);
 
-namespace App\Rozetka\Account;
+namespace App\Rozetka\Account\Service;
 
-use App\Rozetka\Account;
+use App\Entity\Rozetka\Account\MarketInfo;
+use App\Entity\Rozetka\Account\SellerInfo;
+use App\Repository\Rozetka\AccountInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
 
-class AccountCreateService
+class Create
 {
     public function __construct(
-        private readonly RepositoryInterface $repository,
-        private readonly Account\Credentials\Retrieve $credentialsRetrieve,
+        private readonly AccountInterface $repository,
+        private readonly \App\Rozetka\Api\Service\CredentialsRetrieve $credentialsRetrieve,
         public readonly EventDispatcherInterface $eventDispatcher,
     ) {
     }
@@ -19,7 +21,7 @@ class AccountCreateService
     public function process(
         string $username,
         string $encodedPassword,
-    ): ?Account {
+    ): ?\App\Entity\Rozetka\Account {
         $accountInfo = $this->credentialsRetrieve->process($username, $encodedPassword);
 
         if ($accountInfo->get('success') === false) {
@@ -38,11 +40,11 @@ class AccountCreateService
 
         $account = $this->repository->findByUsername($username);
         if ($account === null) {
-            $account = new Account($username, $encodedPassword, $sellerInfo, $marketInfo);
+            $account = new \App\Entity\Rozetka\Account($username, $encodedPassword, $sellerInfo, $marketInfo);
 
             $this->repository->create($account);
 
-            $this->eventDispatcher->dispatch(new Account\Event\AccountCreated($account));
+            $this->eventDispatcher->dispatch(new \App\Rozetka\Account\Event\Created($account));
         }
 
         $account->setPassword($encodedPassword);

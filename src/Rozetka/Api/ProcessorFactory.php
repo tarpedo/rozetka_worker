@@ -12,7 +12,7 @@ class ProcessorFactory
     ) {
     }
 
-    public function create(\App\Rozetka\Account $account): Processor
+    public function create(\App\Entity\Rozetka\Account $account): Processor
     {
         return new Processor(
             $account,

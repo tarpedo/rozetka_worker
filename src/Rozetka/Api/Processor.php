@@ -7,13 +7,13 @@ namespace App\Rozetka\Api;
 class Processor
 {
     public function __construct(
-        private readonly \App\Rozetka\Account $account,
-        private readonly \App\Rozetka\Api\ConnectorInterface $connector,
-        private readonly \App\Rozetka\Api\AccessTokenFactory $accessTokenFactory,
+        private readonly \App\Entity\Rozetka\Account $account,
+        private readonly ConnectorInterface $connector,
+        private readonly AccessTokenFactory $accessTokenFactory,
     ) {
     }
 
-    public function single(\App\Rozetka\Api\CommandInterface $command): \App\Kernel\ArrayWrapper
+    public function single(CommandInterface $command): \App\Kernel\ArrayWrapper
     {
         $apiAccount = $this->createApiAccount();
 

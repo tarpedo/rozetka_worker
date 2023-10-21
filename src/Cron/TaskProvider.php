@@ -27,7 +27,7 @@ class TaskProvider implements ScheduleProviderInterface
             ->add(
                 RecurringMessage::every(
                     '1 minute',
-                    new Task\RozetkaCheckAccount\Message()
+                    new Rozetka\AccountCheckMessage()
                 )
             )
             ->lock($this->lockFactory->createLock('cron'))

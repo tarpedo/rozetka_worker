@@ -9,12 +9,12 @@ class AccessTokenFactory
     private const CACHE_LIFETIME = 30;
 
     public function __construct(
-        private readonly \App\Rozetka\Account\Credentials\Retrieve $credentialsRetrieve,
+        private readonly Service\CredentialsRetrieve $credentialsRetrieve,
         private readonly \Symfony\Contracts\Cache\CacheInterface $cache,
     ) {
     }
 
-    public function create(\App\Rozetka\Account $account): ?string
+    public function create(\App\Entity\Rozetka\Account $account): ?string
     {
         return $this->cache->get(
             $this->prepareCacheKey($account->getId()),

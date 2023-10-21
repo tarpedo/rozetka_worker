@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Rozetka;
+namespace App\Entity\Rozetka;
 
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;

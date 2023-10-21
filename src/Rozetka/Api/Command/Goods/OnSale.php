@@ -8,8 +8,10 @@ class OnSale implements \App\Rozetka\Api\CommandInterface
 {
     private const PAGE_SIZE = 100;
 
-    public function __construct(private readonly int $page = 1)
-    {
+    public function __construct(
+        private readonly int $page = 1,
+        private readonly ?int $pageSize = self::PAGE_SIZE,
+    ) {
     }
 
     public function getName(): string
@@ -26,7 +28,7 @@ class OnSale implements \App\Rozetka\Api\CommandInterface
 
         /** @psalm-suppress InvalidArgument */
         $uri = \GuzzleHttp\Psr7\Uri::withQueryValues($request->getUri(), [
-            'pageSize' => self::PAGE_SIZE,
+            'pageSize' => $this->pageSize,
             'page' => $this->page,
         ]);
 
