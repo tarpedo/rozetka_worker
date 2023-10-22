@@ -87,9 +87,19 @@ class Good
         return $this->name;
     }
 
+    public function setName(string $name): void
+    {
+        $this->name = $name;
+    }
+
     public function getUrl(): string
     {
         return $this->url;
+    }
+
+    public function setUrl(string $url): void
+    {
+        $this->url = $url;
     }
 
     public function getPrice(): int
@@ -97,9 +107,19 @@ class Good
         return $this->price;
     }
 
+    public function setPrice(int $price): void
+    {
+        $this->price = $price;
+    }
+
     public function getPriceOld(): int
     {
         return $this->priceOld;
+    }
+
+    public function setPriceOld(int $priceOld): void
+    {
+        $this->priceOld = $priceOld;
     }
 
     public function getRzCategory(): Good\RzCategory

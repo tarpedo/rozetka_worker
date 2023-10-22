@@ -27,7 +27,7 @@ class Message implements MessageInterface
     {
         return [
             'username' => $this->username,
-            'order' => $this->page,
+            'page' => $this->page,
             'data' => $this->data->toArray(),
             'action_date' => $this->actionDate->format('Y-m-d H:i:s'),
         ];
