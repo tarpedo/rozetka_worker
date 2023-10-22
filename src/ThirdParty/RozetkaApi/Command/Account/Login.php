@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Rozetka\Api\Command\Account;
+namespace App\ThirdParty\RozetkaApi\Command\Account;
 
-class Login implements \App\Rozetka\Api\CommandInterface
+class Login implements \App\ThirdParty\RozetkaApi\CommandInterface
 {
     public function __construct(
         private readonly string $username,

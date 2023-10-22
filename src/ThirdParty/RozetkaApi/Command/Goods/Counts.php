@@ -2,21 +2,20 @@
 
 declare(strict_types=1);
 
-namespace App\Rozetka\Api\Command\Items;
+namespace App\ThirdParty\RozetkaApi\Command\Goods;
 
-/** @deprecated Use "Goods/Counts" command */
-class Counts implements \App\Rozetka\Api\CommandInterface
+class Counts implements \App\ThirdParty\RozetkaApi\CommandInterface
 {
     public function getName(): string
     {
-        return 'Items/Counts';
+        return 'Goods/Counts';
     }
 
     public function getRequest(): \GuzzleHttp\Psr7\Request
     {
         return new \GuzzleHttp\Psr7\Request(
             'GET',
-            '/items/counts',
+            '/goods/counts',
         );
     }
 

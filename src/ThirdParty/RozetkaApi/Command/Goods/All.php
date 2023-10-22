@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Rozetka\Api\Command\Goods;
+namespace App\ThirdParty\RozetkaApi\Command\Goods;
 
-class All implements \App\Rozetka\Api\CommandInterface
+class All implements \App\ThirdParty\RozetkaApi\CommandInterface
 {
     public function __construct(private readonly int $page = 1)
     {

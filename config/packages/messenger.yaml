@@ -1,8 +1,18 @@
 framework:
-    messenger:
-        buses:
-            event.bus:
-                default_middleware:
-                    enabled: true
-                    allow_no_handlers: false
-                    allow_no_senders: false
+  messenger:
+    transports:
+      amazon-sqs-downloader:
+        dsn: '%env(AMAZON_SQS_GENERAL_URL)%'
+        serializer: App\ThirdParty\Amazon\Sqs\Serializer
+        options:
+          access_key: '%env(AMAZON_SQS_ACCESS_KEY)%'
+          secret_key: '%env(AMAZON_SQS_SECRET_KEY)%'
+          auto_setup: false
+    routing:
+      'App\Message\Rozetka\AllGoodsPageNeedDownload\Message': amazon-sqs-downloader
+    buses:
+      event.bus:
+        default_middleware:
+          enabled: true
+          allow_no_handlers: false
+          allow_no_senders: false

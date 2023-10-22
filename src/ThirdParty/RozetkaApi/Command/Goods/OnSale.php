@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Rozetka\Api\Command\Goods;
+namespace App\ThirdParty\RozetkaApi\Command\Goods;
 
-class OnSale implements \App\Rozetka\Api\CommandInterface
+class OnSale implements \App\ThirdParty\RozetkaApi\CommandInterface
 {
     private const PAGE_SIZE = 100;
 

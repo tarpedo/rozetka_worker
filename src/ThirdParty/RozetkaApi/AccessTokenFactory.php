@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\Rozetka\Api;
+namespace App\ThirdParty\RozetkaApi;
 
 class AccessTokenFactory
 {
     private const CACHE_LIFETIME = 30;
 
     public function __construct(
-        private readonly Service\CredentialsRetrieve $credentialsRetrieve,
+        private readonly \App\ThirdParty\RozetkaApi\Service\CredentialsRetrieve $credentialsRetrieve,
         private readonly \Symfony\Contracts\Cache\CacheInterface $cache,
     ) {
     }

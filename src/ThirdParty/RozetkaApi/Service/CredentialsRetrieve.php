@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Rozetka\Api\Service;
+namespace App\ThirdParty\RozetkaApi\Service;
 
 class CredentialsRetrieve
 {
     public function __construct(
-        private readonly \App\Rozetka\Api\ConnectorInterface $connector,
+        private readonly \App\ThirdParty\RozetkaApi\ConnectorInterface $connector,
     ) {
     }
 
@@ -15,13 +15,13 @@ class CredentialsRetrieve
         string $username,
         string $encodedPassword
     ): \App\Kernel\ArrayWrapper {
-        $command = new \App\Rozetka\Api\Command\Account\Login(
+        $command = new \App\ThirdParty\RozetkaApi\Command\Account\Login(
             $username,
             $encodedPassword,
         );
 
         return $this->connector->single(
-            new \App\Rozetka\Api\Account(),
+            new \App\ThirdParty\RozetkaApi\Account(),
             $command,
         );
     }

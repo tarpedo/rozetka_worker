@@ -13,7 +13,7 @@ class Create
 {
     public function __construct(
         private readonly AccountInterface $repository,
-        private readonly \App\Rozetka\Api\Service\CredentialsRetrieve $credentialsRetrieve,
+        private readonly \App\ThirdParty\RozetkaApi\Service\CredentialsRetrieve $credentialsRetrieve,
         public readonly EventDispatcherInterface $eventDispatcher,
     ) {
     }

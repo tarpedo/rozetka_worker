@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Rozetka\Api;
+namespace App\ThirdParty\RozetkaApi;
 
 class ClientFactory
 {
