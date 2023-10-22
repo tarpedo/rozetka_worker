@@ -20,7 +20,7 @@ class Serializer implements \Symfony\Component\Messenger\Transport\Serialization
 
         $message = $this->messageResolver->resolve(
             $rawData['name'] ?? \App\ThirdParty\Amazon\Sqs\Message\NotValid::NAME,
-            $encodedEnvelope['data'] ?? $encodedEnvelope,
+            $rawData['data'] ?? $encodedEnvelope,
         );
 
         return new Envelope($message);
