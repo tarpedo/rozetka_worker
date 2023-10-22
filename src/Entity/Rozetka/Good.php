@@ -16,6 +16,10 @@ class Good
     #[ORM\Column(name: 'rz_item_id', type: Types::INTEGER, length: 255, unique: true, nullable: false)]
     private int $rzItemId;
 
+    #[ORM\ManyToOne(targetEntity: Account::class)]
+    #[ORM\JoinColumn(name: 'account_id', referencedColumnName: 'id', nullable: false, onDelete: 'CASCADE')]
+    private Account $account;
+
     #[ORM\Column(name: 'name', type: Types::STRING, length: 255, nullable: false)]
     private string $name;
 
@@ -69,6 +73,13 @@ class Good
     public function getRzItemId(): int
     {
         return $this->rzItemId;
+    }
+
+    public function setAccount(Account $account): self
+    {
+        $this->account = $account;
+
+        return $this;
     }
 
     public function getName(): string
