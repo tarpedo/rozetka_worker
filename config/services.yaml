@@ -1,4 +1,7 @@
 parameters:
+  app.auth.known_applications:
+    - name: 'crm'
+      key: '%env(AUTH_APP_CRM)%'
 
 services:
   _defaults:
@@ -24,3 +27,7 @@ services:
   App\Kernel\FoldersStructure:
     arguments:
       $projectDir: '%kernel.project_dir%'
+
+  App\Console\GenerateJwt:
+    arguments:
+      $rawApplications: '%app.auth.known_applications%'
