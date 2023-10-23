@@ -45,6 +45,8 @@ class Create
             $this->repository->create($account);
 
             $this->eventDispatcher->dispatch(new \App\Rozetka\Account\Event\Created($account));
+
+            return $account;
         }
 
         $account->setPassword($encodedPassword);
