@@ -1,0 +1,5 @@
+# Internal API
+api:
+  resource: 'routes/api/v1.yaml'
+  prefix: /api/v1
+  name_prefix: api_v1_

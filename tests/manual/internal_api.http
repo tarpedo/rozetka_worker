@@ -1,0 +1,7 @@
+### find Rozetka account
+POST {{endpoint}}/v1/rozetka/account/find
+Content-Type: application/json
+
+{
+  "username": "find_this_username"
+}

@@ -31,3 +31,7 @@ services:
   App\Console\GenerateJwt:
     arguments:
       $rawApplications: '%app.auth.known_applications%'
+
+  _instanceof:
+    App\InternalApi\ControllerInterface:
+      tags: [ 'controller.service_arguments' ]
