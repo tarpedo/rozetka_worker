@@ -12,6 +12,7 @@
         "doctrine/orm": "^2.16",
         "google/cloud-storage": "^1.33",
         "lcobucci/jwt": "^5.0",
+        "opis/json-schema": "^2.3",
         "psalm/plugin-symfony": "^5.0",
         "symfony/amazon-sqs-messenger": "6.3.*",
         "symfony/console": "6.3.*",

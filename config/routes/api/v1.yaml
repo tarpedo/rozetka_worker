@@ -1,4 +1,4 @@
-license_generate_key:
+rozetka_account_find:
   path: /rozetka/account/find
   controller: App\InternalApi\Controller\Rozetka\Account\Find\Handler::process
   methods: POST
