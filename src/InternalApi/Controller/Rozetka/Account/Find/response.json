@@ -2,12 +2,12 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "type": "object",
     "required": [
-        "present"
+        "id"
     ],
     "additionalProperties": false,
     "properties": {
-        "present": {
-            "type": "boolean"
+        "id":  {
+            "type": "integer"
         }
     }
 }

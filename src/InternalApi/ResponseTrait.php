@@ -12,7 +12,9 @@ trait ResponseTrait
     protected function success(array $data = []): JsonResponse
     {
         return new JsonResponse(
-            $data,
+            [
+                'data' => $data,
+            ],
             Response::HTTP_OK
         );
     }

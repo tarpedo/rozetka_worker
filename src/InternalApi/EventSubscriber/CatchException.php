@@ -18,12 +18,12 @@ class CatchException implements \Symfony\Component\EventDispatcher\EventSubscrib
         $e = $event->getThrowable();
 
         if ($e instanceof BadRequestResponseData) {
-            $data = [
-                'text' => $e->getMessage(),
-                'errors' => $e->getAdditionalData(),
-            ];
-
-            $event->setResponse(new JsonResponse($data, Response::HTTP_BAD_REQUEST));
+            $event->setResponse(
+                new JsonResponse([
+                    'text' => $e->getMessage(),
+                    'errors' => $e->getAdditionalData(),
+                ], Response::HTTP_BAD_REQUEST)
+            );
         }
     }
 

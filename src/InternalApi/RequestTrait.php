@@ -18,7 +18,7 @@ trait RequestTrait
                     flags: JSON_THROW_ON_ERROR
                 )
             );
-        } catch (\JsonException $e) {
+        } catch (\JsonException) {
             return new ArrayWrapper();
         }
     }
