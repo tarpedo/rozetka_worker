@@ -1,3 +1,12 @@
+### create Rozetka account
+POST {{endpoint}}/v1/rozetka/account/create
+Content-Type: application/json
+
+{
+  "username": "username",
+  "encoded_password": "encoded_password"
+}
+
 ### find Rozetka account
 POST {{endpoint}}/v1/rozetka/account/find
 Content-Type: application/json

@@ -1,3 +1,8 @@
+rozetka_account_create:
+  path: /rozetka/account/create
+  controller: App\InternalApi\Controller\Rozetka\Account\Create\Handler::process
+  methods: POST
+
 rozetka_account_find:
   path: /rozetka/account/find
   controller: App\InternalApi\Controller\Rozetka\Account\Find\Handler::process
