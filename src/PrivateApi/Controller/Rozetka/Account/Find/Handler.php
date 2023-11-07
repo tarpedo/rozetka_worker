@@ -2,22 +2,24 @@
 
 declare(strict_types=1);
 
-namespace App\InternalApi\Controller\Rozetka\Account\Find;
+namespace App\PrivateApi\Controller\Rozetka\Account\Find;
 
+use App\PrivateApi\EventSubscriber\Attribute;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class Handler implements \App\InternalApi\ControllerInterface
+class Handler implements \App\PrivateApi\ControllerInterface
 {
-    use \App\InternalApi\RequestTrait;
-    use \App\InternalApi\ResponseTrait;
+    use \App\PrivateApi\RequestTrait;
+    use \App\PrivateApi\ResponseTrait;
 
     public function __construct(
         private readonly \App\Repository\Rozetka\AccountInterface $repositoryRozetkaAccount,
     ) {
     }
 
+    #[Attribute\Authentication]
     public function process(Request $request): JsonResponse
     {
         $requestData = $this->parseJson($request->getContent());

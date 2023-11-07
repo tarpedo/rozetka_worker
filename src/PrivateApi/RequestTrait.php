@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\InternalApi;
+namespace App\PrivateApi;
 
 use App\Kernel\ArrayWrapper;
 

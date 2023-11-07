@@ -9,6 +9,7 @@ Content-Type: application/json
 
 ### find Rozetka account
 POST {{endpoint}}/v1/rozetka/account/find
+access-token: {{access-token}}
 Content-Type: application/json
 
 {

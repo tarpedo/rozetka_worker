@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\InternalApi;
+namespace App\PrivateApi;
 
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;

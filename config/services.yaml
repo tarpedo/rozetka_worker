@@ -1,6 +1,6 @@
 parameters:
   app.auth.known_applications:
-    - name: 'crm'
+    - name: 'Crm'
       key: '%env(AUTH_APP_CRM)%'
 
 services:
@@ -28,10 +28,17 @@ services:
     arguments:
       $projectDir: '%kernel.project_dir%'
 
+  App\PrivateApi\KnownApp\RepositoryFactory:
+    arguments:
+      $rawApplications: '%app.auth.known_applications%'
+  App\PrivateApi\KnownApp\Repository:
+    autowire: false
+    factory: [ '@App\PrivateApi\KnownApp\RepositoryFactory', 'create' ]
+
   App\Console\GenerateJwt:
     arguments:
       $rawApplications: '%app.auth.known_applications%'
 
   _instanceof:
-    App\InternalApi\ControllerInterface:
+    App\PrivateApi\ControllerInterface:
       tags: [ 'controller.service_arguments' ]

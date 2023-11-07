@@ -2,12 +2,13 @@
 
 declare(strict_types=1);
 
-namespace App\InternalApi\EventSubscriber;
+namespace App\PrivateApi\EventSubscriber;
 
 use App\Kernel\Exception\BadRequestResponseData;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\ExceptionEvent;
+use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 use Symfony\Component\HttpKernel\KernelEvents;
 
 class CatchException implements \Symfony\Component\EventDispatcher\EventSubscriberInterface
@@ -25,12 +26,21 @@ class CatchException implements \Symfony\Component\EventDispatcher\EventSubscrib
                 ], Response::HTTP_BAD_REQUEST)
             );
         }
+
+        if ($e instanceof UnauthorizedHttpException) {
+            $event->setResponse(
+                new JsonResponse([
+                    'text' => $e->getMessage(),
+                    'code' => $e->getStatusCode(),
+                ], $e->getStatusCode())
+            );
+        }
     }
 
     public static function getSubscribedEvents(): array
     {
         return [
-            KernelEvents::EXCEPTION => ['onKernelException'],
+            KernelEvents::EXCEPTION => ['onKernelException', 100],
         ];
     }
 }

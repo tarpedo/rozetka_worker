@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\InternalApi\EventSubscriber;
+namespace App\PrivateApi\EventSubscriber;
 
 use App\Kernel\Exception\BadRequestResponseData;
 use Symfony\Component\HttpFoundation\Request;
@@ -73,7 +73,7 @@ class ValidateSchema implements \Symfony\Component\EventDispatcher\EventSubscrib
     public static function getSubscribedEvents(): array
     {
         return [
-            KernelEvents::CONTROLLER => ['onKernelController'],
+            KernelEvents::CONTROLLER => ['onKernelController', 70],
             KernelEvents::RESPONSE   => ['onKernelResponse'],
         ];
     }
