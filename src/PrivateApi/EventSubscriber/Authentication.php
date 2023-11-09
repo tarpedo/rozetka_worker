@@ -8,7 +8,7 @@ use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 
 class Authentication implements \Symfony\Component\EventDispatcher\EventSubscriberInterface
 {
-    public const KNOWN_APP_NAME = 'X-App';
+    public const KNOWN_APP_NAME = 'X-Known-App';
 
     public function __construct(
         private readonly \App\PrivateApi\KnownApp\Repository $knownAppRepository,
@@ -19,7 +19,7 @@ class Authentication implements \Symfony\Component\EventDispatcher\EventSubscrib
     {
         /** @var Attribute\Authentication $authentication */
         $authentication = $event->getRequest()->attributes->get(Attribute\Authentication::class);
-        if ($authentication !== null && !$authentication->required) {
+        if ($authentication === null || !$authentication->required) {
             return;
         }
 

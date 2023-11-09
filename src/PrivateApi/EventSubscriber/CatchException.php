@@ -8,6 +8,7 @@ use App\Kernel\Exception\BadRequestResponseData;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\ExceptionEvent;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 use Symfony\Component\HttpKernel\KernelEvents;
 
@@ -27,7 +28,10 @@ class CatchException implements \Symfony\Component\EventDispatcher\EventSubscrib
             );
         }
 
-        if ($e instanceof UnauthorizedHttpException) {
+        if (
+            $e instanceof UnauthorizedHttpException
+            || $e instanceof AccessDeniedHttpException
+        ) {
             $event->setResponse(
                 new JsonResponse([
                     'text' => $e->getMessage(),

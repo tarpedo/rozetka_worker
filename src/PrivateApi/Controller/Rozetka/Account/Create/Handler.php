@@ -21,6 +21,7 @@ class Handler implements \App\PrivateApi\ControllerInterface
     }
 
     #[Attribute\Authentication]
+    #[Attribute\Authorization(['Crm'])]
     public function process(Request $request): JsonResponse
     {
         $requestData = $this->parseJson($request->getContent());
