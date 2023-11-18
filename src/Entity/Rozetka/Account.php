@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Entity\Rozetka;
 
+use App\Entity\Rozetka\Account\MarketInfo;
+use App\Entity\Rozetka\Account\SellerInfo;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -70,6 +72,11 @@ class Account
         return $this->username;
     }
 
+    public function setUsername(string $username): void
+    {
+        $this->username = $username;
+    }
+
     public function getPassword(): string
     {
         return $this->password;
@@ -85,6 +92,16 @@ class Account
         return $this->sellerInfo;
     }
 
+    public function getSellerFio(): string
+    {
+        return $this->sellerInfo->getFio();
+    }
+
+    public function getSellerEmail(): string
+    {
+        return $this->sellerInfo->getEmail();
+    }
+
     public function setSellerInfo(Account\SellerInfo $sellerInfo): self
     {
         $this->sellerInfo = $sellerInfo;
@@ -92,9 +109,37 @@ class Account
         return $this;
     }
 
+    public function setSellerFio(string $sellerFio): void
+    {
+        if (!isset($this->sellerInfo)) {
+            $this->sellerInfo = new SellerInfo($sellerFio, '');
+        } else {
+            $this->sellerInfo->setFio($sellerFio);
+        }
+    }
+
+    public function setSellerEmail(string $sellerEmail): void
+    {
+        if (!isset($this->sellerInfo)) {
+            $this->sellerInfo = new SellerInfo('', $sellerEmail);
+        } else {
+            $this->sellerInfo->setEmail($sellerEmail);
+        }
+    }
+
     public function getMarketInfo(): Account\MarketInfo
     {
         return $this->marketInfo;
+    }
+
+    public function getMarketId(): int
+    {
+        return $this->getMarketInfo()->getId();
+    }
+
+    public function getMarketTitle(): string
+    {
+        return $this->getMarketInfo()->getTitle();
     }
 
     public function setMarketInfo(Account\MarketInfo $marketInfo): self
@@ -102,6 +147,24 @@ class Account
         $this->marketInfo = $marketInfo;
 
         return $this;
+    }
+
+    public function setMarketId(int $marketId): void
+    {
+        if (!isset($this->marketInfo)) {
+            $this->marketInfo = new MarketInfo($marketId, '');
+        } else {
+            $this->marketInfo->setId($marketId);
+        }
+    }
+
+    public function setMarketTitle(string $marketTitle): void
+    {
+        if (!isset($this->marketInfo)) {
+            $this->marketInfo = new MarketInfo(0, $marketTitle);
+        } else {
+            $this->marketInfo->setTitle($marketTitle);
+        }
     }
 
     public function getUpdateDate(): \DateTimeImmutable

@@ -7,6 +7,12 @@ services:
   _defaults:
     autowire: true
     autoconfigure: true
+
+  admin.rozetka_accounts:
+    class: App\Admin\RozetkaAccountsAdmin
+    tags:
+      - { name: sonata.admin, model_class: App\Entity\Rozetka\Account, manager_type: orm, label: Account }
+
   App\:
     resource: '../src/'
     exclude:

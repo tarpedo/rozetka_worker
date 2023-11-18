@@ -33,4 +33,14 @@ class SellerInfo
     {
         return $this->email;
     }
+
+    public function setFio(string $fio): void
+    {
+        $this->fio = $fio;
+    }
+
+    public function setEmail(string $email): void
+    {
+        $this->email = $email;
+    }
 }

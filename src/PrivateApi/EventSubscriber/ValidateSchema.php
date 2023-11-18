@@ -73,8 +73,8 @@ class ValidateSchema implements \Symfony\Component\EventDispatcher\EventSubscrib
     public static function getSubscribedEvents(): array
     {
         return [
-            KernelEvents::CONTROLLER => ['onKernelController', 70],
-            KernelEvents::RESPONSE   => ['onKernelResponse'],
+            //KernelEvents::CONTROLLER => ['onKernelController', 70],
+            //KernelEvents::RESPONSE   => ['onKernelResponse'],
         ];
     }
 
