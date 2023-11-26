@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20231126103534 extends AbstractMigration
+final class Version20231126210656 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -24,6 +24,7 @@ final class Version20231126103534 extends AbstractMigration
         (
             id          INT UNSIGNED AUTO_INCREMENT NOT NULL,
             login       VARCHAR(100)                NOT NULL,
+            password    VARCHAR(200)                NOT NULL,
             roles       JSON                        NOT NULL,
             update_date DATETIME                    NOT NULL COMMENT '(DC2Type:datetime_immutable)',
             create_date DATETIME                    NOT NULL COMMENT '(DC2Type:datetime_immutable)',

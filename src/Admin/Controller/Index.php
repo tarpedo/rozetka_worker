@@ -19,5 +19,4 @@ class Index extends \Symfony\Bundle\FrameworkBundle\Controller\AbstractControlle
             )
         );
     }
-
 }

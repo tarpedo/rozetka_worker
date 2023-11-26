@@ -14,12 +14,12 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class CatchException implements EventSubscriberInterface
 {
+    private const ADMIN_ROUTE_PREFIX = '/admin';
+
     public function __construct(
         private readonly RouterInterface $router,
     ) {
     }
-
-    private const ADMIN_ROUTE_PREFIX = '/admin';
 
     public function onKernelException(ExceptionEvent $event): void
     {
@@ -31,7 +31,9 @@ class CatchException implements EventSubscriberInterface
         $e = $event->getThrowable();
 
         if ($e instanceof AccessDeniedException) {
-            $event->setResponse(new RedirectResponse($this->router->generate('admin_login_index')));
+            $event->setResponse(
+                new RedirectResponse($this->router->generate('admin_login_index'))
+            );
         }
     }
 
