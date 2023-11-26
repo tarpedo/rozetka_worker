@@ -7,3 +7,7 @@ api:
 admin_login_process:
   path: /admin/login/process
   methods: POST
+
+admin_logout_process:
+  path: /admin/logout/process
+  methods: GET

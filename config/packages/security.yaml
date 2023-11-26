@@ -13,16 +13,12 @@ security:
         property: email
   firewalls:
     admin:
-      access_denied_handler:
-        App\Admin\Security\AccessDeniedHandler
-      entry_point:
-        App\Admin\Security\AuthenticationEntryPoint
       pattern: ^/admin
       lazy: true
       provider: admin
       logout:
-        path: admin_auth_log_out
-        target: admin
+        path: admin_logout_process
+        target: admin_login_index
       custom_authenticators:
         - App\Admin\Security\LoginFormAuthenticator
   access_control:
