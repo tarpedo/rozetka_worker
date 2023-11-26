@@ -1,7 +1,21 @@
-{% extends 'admin/layout/base.html.twig' %}
-{% block content %}
-    <form method="post">
-        <input type="text" name="username" value=""/>
-        <button type="submit">Login</button>
+{% extends '@AdminLTE/layout/security-layout.html.twig' %}
+{% block logo_login %}
+    <b>Rozetka</b>Worker
+{% endblock %}
+{% block login_form %}
+    <form action="{{ url('admin_login_process') }}" method="post">
+        <div class="form-group has-feedback">
+            <input type="email" name="email" placeholder="Email" class="form-control" value="test@test.com">
+            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
+            <input name="password" type="password" class="form-control" placeholder="Password" value="1">
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">Login</button>
+        </div>
     </form>
+{% endblock %}
+{% block login_social_auth %}
 {% endblock %}

@@ -18,3 +18,7 @@ doctrine:
         type: attribute
         dir: '%kernel.project_dir%/src/Entity/Rozetka'
         prefix: App\Entity\Rozetka
+      Admin:
+        type: attribute
+        dir: '%kernel.project_dir%/src/Entity/Admin'
+        prefix: App\Entity\Admin

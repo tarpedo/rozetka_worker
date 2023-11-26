@@ -1,0 +1,30 @@
+security:
+  enable_authenticator_manager: true
+  password_hashers:
+    Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'plaintext'
+
+  providers:
+    admin:
+      id: 'App\Admin\Security\Provider'
+    # used to reload user from session & other features (e.g. switch_user)
+    app_user_provider:
+      entity:
+        class: App\Entity\Admin
+        property: email
+  firewalls:
+    admin:
+      access_denied_handler:
+        App\Admin\Security\AccessDeniedHandler
+      entry_point:
+        App\Admin\Security\AuthenticationEntryPoint
+      pattern: ^/admin
+      lazy: true
+      provider: admin
+      logout:
+        path: admin_auth_log_out
+        target: admin
+      custom_authenticators:
+        - App\Admin\Security\LoginFormAuthenticator
+  access_control:
+    - { path: '^/admin/login', roles: PUBLIC_ACCESS }
+    - { path: '^/admin', roles: [ROLE_ADMIN] }
