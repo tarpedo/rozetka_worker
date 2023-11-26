@@ -3,3 +3,11 @@ api:
   resource: 'routes/api/v1.yaml'
   prefix: /api/v1
   name_prefix: api_v1_
+
+admin_login_process:
+  path: /admin/login/process
+  methods: POST
+
+admin_logout_process:
+  path: /admin/logout/process
+  methods: GET
